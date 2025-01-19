@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <title>Analyseur de fichiers tcpdump</title>
+    <!-- Inclure une bibliothèque de polices pour une meilleure apparence -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="navbar-brand">Analyseur de fichiers tcpdump</a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="/" class="nav-link">Accueil</a></li>
+                <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Bienvenue sur l'analyseur de fichiers tcpdump</h1>
+        <p>Veuillez télécharger un fichier tcpdump pour commencer l'analyse.</p>
+        <form action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+            <input type="file" name="file" class="file-input">
+            <button type="submit" class="btn"><i class="fas fa-upload"></i> Analyser</button>
+        </form>
+        <div id="result" class="result-section">
+            <!-- Les résultats de l'analyse seront affichés ici -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Analyseur de fichiers tcpdump. Tous droits réservés.</p>
+            <p><a href="/contact">Contactez-nous</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.upload-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fileInput = document.querySelector('.file-input');
+            if (fileInput.files.length === 0) {
+                alert("Veuillez sélectionner un fichier avant de soumettre.");
+                return;
+            }
+            this.submit();
+        });
+    </script>
+    <!-- Inclure FontAwesome pour les icônes -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
